@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html style="overflow: hidden;">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,15 +23,15 @@
 <body>
 
 
-<div class="form-container">
-  <p class="form-head">Sala de chat</p>
-  <ul id="mensagensER"></ul>
-  <form onsubmit="return enviar()">
-    <input id="mensagem" placeholder="Escreva uma mensagem" autocomplete="off">
-    
-  </form>
-</div>
-  
+  <div class="form-container">
+    <p class="form-head">Sala de chat</p>
+    <ul id="mensagensER"></ul>
+    <form onsubmit="return enviar()">
+      <input id="mensagem" placeholder="Escreva uma mensagem" autocomplete="off">
+
+    </form>
+  </div>
+
 
 
 
@@ -61,7 +62,7 @@
           "autor": mNome,
           "mensagem": msg
         })
-        document.getElementById("mensagem").value='';
+        document.getElementById("mensagem").value = '';
         return false
       }
 
