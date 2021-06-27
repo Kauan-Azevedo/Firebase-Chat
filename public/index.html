@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chat - Inspiration</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="/__/firebase/8.6.8/firebase-app.js"></script>
+  <script src="/__/firebase/8.6.8/firebase-auth.js"></script>
+  <script src="/__/firebase/8.6.8/firebase-database.js"></script>
+  <script src="/__/firebase/8.6.8/firebase-firestore.js"></script>
+  <script src="/__/firebase/8.6.8/firebase-functions.js"></script>
+  <script src="/__/firebase/8.6.8/firebase-messaging.js"></script>
+  <script src="/__/firebase/8.6.8/firebase-storage.js"></script>
+  <script src="/__/firebase/8.6.8/firebase-analytics.js"></script>
+  <script src="/__/firebase/8.6.8/firebase-remote-config.js"></script>
+  <script src="/__/firebase/8.6.8/firebase-performance.js"></script>
+  <script src="/__/firebase/init.js?useEmulator=true"></script>
+</head>
+
+<body>
+
+
+<div class="form-container">
+  <p class="form-head">Sala de chat</p>
+  <ul id="mensagensER"></ul>
+  <form onsubmit="return enviar()">
+    <input id="mensagem" placeholder="Escreva uma mensagem" autocomplete="off">
+    
+  </form>
+</div>
+  
+
+
+
+
+
+
+
+
+
+  <script defer>
+    var mNome = prompt("Digite seu nome")
+    if (mNome == "" || mNome == null) {
+      mNome = "Anonimo" + Math.floor(Math.random() * 1000 + 1).toFixed(0)
+    }
+
+
+
+    function enviar() {
+      //pega valor
+      var msg = document.getElementById("mensagem").value
+
+      if (msg == "") {
+        alert("mensagem inválida")
+        return false;
+      } else {
+        //salva valor
+        firebase.database().ref("mensagens").push().set({
+          "autor": mNome,
+          "mensagem": msg
+        })
+        document.getElementById("mensagem").value='';
+        return false
+      }
+
+    }
+
+    firebase.database().ref("mensagens").on("child_added", function (snapshot) {
+
+      var html = "";
+      html += "<li class='msg-container'>";
+      html += snapshot.val().autor + ": " + snapshot.val().mensagem;
+      html += "</li>";
+
+      document.getElementById("mensagensER").innerHTML += html;
+    })
+  </script>
+</body>
+
+</html>

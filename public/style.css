@@ -1,0 +1,55 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    background-image: linear-gradient(to right,rgb(77, 162, 165), rgb(207, 96, 56));
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    font-family: Helvetica;
+    color: rgb(241, 241, 241);
+    font-weight: bold;
+    outline: none;
+}
+.form-container{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 55px;
+    padding: 10px;
+    border-radius: 10px;
+    width: 50%;
+    max-height: 700px;
+    overflow-y: auto;
+    background-color: rgba(29, 29, 29, 0.705);
+    overflow-x: hidden;
+}
+.form-container > li {
+    padding-right: 25px !important;
+}
+.msg-container{
+    list-style-type: none;
+    padding-top: 10px;
+}
+#mensagem{
+    width: 99%;
+    height: 30px;
+    border-radius: 10px;
+    background-color: rgba(20, 20, 20, 0.63);
+    color: rgb(241, 241, 241);
+    border: none;
+    outline: none;
+    font-family: Helvetica;
+    font-weight: bold;
+        
+}
+#mensagensER{
+    padding: 4px;
+}
+::placeholder{
+    color: rgb(158, 158, 158);
+}
+.form-head{
+    text-align: center;
+    color: rgb(241, 241, 241);
+    font-weight: bolder;
+    font-size: 26px;
+}
