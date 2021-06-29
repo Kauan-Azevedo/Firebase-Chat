@@ -66,6 +66,15 @@ body {
     font-size: 26px;
     overflow-x: hidden;
 }
+.btn-delete{
+    background: red;
+    border: none;
+    color: white;
+    font-weight: bolder;
+    border: 1px solid red;
+    margin-left: 10px;
+    border-radius: 7px;
+}
 
 @media (max-width: 769px) {
     .form-container {

@@ -47,8 +47,6 @@
       mNome = "Anonimo" + Math.floor(Math.random() * 1000 + 1).toFixed(0)
     }
 
-
-
     function enviar() {
       //pega valor
       var msg = document.getElementById("mensagem").value
@@ -71,11 +69,24 @@
     firebase.database().ref("mensagens").on("child_added", function (snapshot) {
 
       var html = "";
-      html += "<li class='msg-container'>";
-      html += snapshot.val().autor + ": " + snapshot.val().mensagem;
+      html += "<li class='msg-container' id='mensagem_"+snapshot.key+"'>";
+        html += snapshot.val().autor + ": " + snapshot.val().mensagem;
+        if(snapshot.val().autor == mNome){
+        html += "<button class='btn-delete' data-id='"+snapshot.key+"' onclick='deleteMsg(this)'>"
+          html += "&times;"
+        html += "</button>"
+      }
       html += "</li>";
 
       document.getElementById("mensagensER").innerHTML += html;
+    })
+    function deleteMsg(self){
+      var msgId = self.getAttribute("data-id")
+      firebase.database().ref("mensagens").child(msgId).remove();
+    }
+
+    firebase.database().ref("mensagens").on("child_removed", function (snapshot){
+      document.getElementById("mensagem_" + snapshot.key).innerHTML = "Mensagem deletada"
     })
   </script>
 </body>
